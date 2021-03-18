@@ -19,7 +19,7 @@ jobs:
       - name: Add SSH key
         env:
           DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
-        run: mkdir -p ~/.ssh && printenv DEPLOY_SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+        run: mkdir -p ~/.ssh && printenv DEPLOY_SSH_PRIVATE_KEY > ~/.ssh/id_rsa && chod 400 ~/.ssh/id_rsa
         
       - name: Deploy application
         env:
