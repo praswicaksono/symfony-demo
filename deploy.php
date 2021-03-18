@@ -30,9 +30,12 @@ set('http_user', 'root');
 // Hosts
 
 host('prod')
-    ->hostname('128.199.178.134')
+    ->hostname(getenv('PRODUCTION_SERVER_IP'))
     ->user('root')
+    ->forwardAgent(true)
+    ->multiplexing(true)
     ->set('deploy_path', '/var/www/{{application}}')
+    ->addSshOption('StrictHostKeyChecking', 'no')
     ->identityFile('~/.ssh/id_rsa');
 
 
