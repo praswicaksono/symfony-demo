@@ -14,7 +14,7 @@ set('git_tty', true);
 
 // Shared files/dirs between deploys 
 add('shared_files', []);
-add('shared_dirs', ['var']);
+add('shared_dirs', ['vendor', 'var/log']);
 
 // Writable dirs by web server 
 add('writable_dirs', []);
@@ -50,8 +50,8 @@ task('deploy', [
     'deploy:vendors',
     'deploy:cache:clear',
     'deploy:cache:warmup',
-    'deploy:symlink',
     'deploy:unlock',
+    'deploy:symlink',
     'cleanup',
 ])->desc('Application deployed');
 
