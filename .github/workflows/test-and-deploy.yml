@@ -14,12 +14,12 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Download deployer
-        run: curl -LO https://deployer.org/deployer.phar && mv deployer.phar dep && chmod +x dep
+        run: curl -LO https://deployer.org/deployer.phar && mv deployer.phar dep && chmod +x dep && ls -la
         
       - name: Add SSH key
         env:
           DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
-        run: printenv DEPLOY_SSH_PRIVATE_KEY >> ~/.ssh/id_rsa
+        run: printenv DEPLOY_SSH_PRIVATE_KEY > ~/.ssh/id_rsa
         
       - name: Deploy application
         env:
