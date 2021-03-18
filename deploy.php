@@ -32,7 +32,7 @@ set('http_user', 'root');
 host('prod')
     ->hostname(getenv('PRODUCTION_SERVER_IP'))
     ->user('root')
-    ->forwardAgent(true)
+    ->forwardAgent(false)
     ->multiplexing(true)
     ->set('deploy_path', '/var/www/{{application}}')
     ->addSshOption('StrictHostKeyChecking', 'no')
