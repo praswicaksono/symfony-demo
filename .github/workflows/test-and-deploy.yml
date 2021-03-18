@@ -22,6 +22,8 @@ jobs:
         run: printenv DEPLOY_SSH_PRIVATE_KEY >> ~/.ssh/id_rsa
         
       - name: Deploy application
+        env:
+          PRODUCTION_SERVER_IP: ${{ secrets.PRODUCTION_SERVER_IP }}
         run: dep deploy -vvv
 
   test:
@@ -41,7 +43,7 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: composer install
       
     - name: Run PHP Stan
       run: ./vendor/bin/phpstan analyze src
